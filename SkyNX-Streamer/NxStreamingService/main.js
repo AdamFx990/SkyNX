@@ -5,8 +5,8 @@ const DB = require('./Devlord_modules/DB.js');
 const Struct = require('struct');
 const net = require('net');
 const robot = require("robotjs");
-const VGen = require("vgen-xbox")
-const vgen = new VGen();
+// const VGen = require("vgen-xbox");
+// const vgen = new VGen();
 const GyroServ = require("./Devlord_modules/GyroServ.js");
 var ip = "0.0.0.0"
 var quality = 5;
@@ -51,7 +51,7 @@ function plugControllerIn() {
 
 function startAudioProcess() {
   ffmpegAudioProcess = spawn(
-    "./lib/ffmpeg.exe",
+    "ffmpeg",
     ["-y", "-f", "dshow", "-i", 'audio=virtual-audio-capturer', "-f", "s16le", "-ar", "16000", "-ac", "2", "-c:a", "pcm_s16le", "udp://" + ip + ":2224?pkt_size=640"],
     { detached: false }
   );
@@ -85,7 +85,7 @@ function startVideoProcess() {
     console.log("Using CPU Encoding");
   }
   ffmpegProcess = spawn(
-    "./lib/ffmpeg.exe",
+    "ffmpeg",
     ffmpegVideoArgs,
     {
       detached: false

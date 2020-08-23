@@ -154,7 +154,7 @@ function startStreamer(arg) {
     args.push("ANALOG");
   }
   streamerProcess = spawn(
-    "./NxStreamingService.exe",
+    "./NxStreamingService.sh",
     args,
     { cwd: cwd, stdio: "pipe" }
   );
